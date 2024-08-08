@@ -1,0 +1,3 @@
+C:/Users/muita/OneDrive/Desktop/trabGrafos/cmake-build-debug/CMakeFiles/trabGrafos.dir
+C:/Users/muita/OneDrive/Desktop/trabGrafos/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/muita/OneDrive/Desktop/trabGrafos/cmake-build-debug/CMakeFiles/rebuild_cache.dir
