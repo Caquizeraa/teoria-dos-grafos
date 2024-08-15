@@ -1,10 +1,14 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <queue>
+#include <limits.h>
+#include "include/prim.h"
 
 using namespace std;
 
 int main(){
+    cout << "Programa iniciado." << endl;
     int qtdVertices, qtdArestas;
     string tipoGrafo;
     cin >> qtdVertices >> qtdArestas >> tipoGrafo;
@@ -30,6 +34,11 @@ int main(){
         }
         cout<<endl;
     }
+
+    int pesoTotal = 0;
+    int caminhoMin = prim(lista_adj, qtdVertices, pesoTotal);
+    cout << caminhoMin //Imprime o caminho mínimo entre vértice 0 e o N-1
+    << endl << pesoTotal; //Imprime o valor total da Árvore Geradora Mínima
 
     return 0;
 }
