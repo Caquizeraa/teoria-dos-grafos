@@ -4,6 +4,8 @@
 #include <queue>
 #include <limits.h>
 #include "include/prim.h"
+#include "include/euleriano.h"
+#include "include/conexo.h"
 
 using namespace std;
 
@@ -35,10 +37,21 @@ int main(){
         cout<<endl;
     }
 
+    // Peso total da arvore geradora minima e a distancia do vertice 0 ao N-1
     int pesoTotal = 0;
     int caminhoMin = prim(lista_adj, qtdVertices, pesoTotal);
     cout << caminhoMin //Imprime o caminho mínimo entre vértice 0 e o N-1
-    << endl << pesoTotal; //Imprime o valor total da Árvore Geradora Mínima
+    << endl << pesoTotal << endl; //Imprime o valor total da Árvore Geradora Mínima
+
+    //Verifica se é euleriano
+    bool teste;
+    teste = euleriano(lista_adj, qtdVertices);
+    cout << teste << endl;
+
+    //Verifica se é euleriano
+    bool ehConexo;
+    ehConexo = conexoNaoDir(lista_adj, qtdVertices);
+    cout << ehConexo << endl;
 
     return 0;
 }

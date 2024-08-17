@@ -13,24 +13,31 @@ int prim(vector<vector<pair<int, pair<int, int>>>>& listaAdj, int qtdVertices, i
 
     priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> min_heap;
 
-    key[0] = 0;
-    min_heap.push({0,0});
-
-    while (!min_heap.empty())
+    for (int i = 0; i < qtdVertices; i++)
     {
-        int x = min_heap.top().second;
-        min_heap.pop();
+        if(!inMST[i]){
+            key[i] = 0;
+            min_heap.push({0,i});
 
-        inMST[x] = true;
-
-        for (auto& relacao : listaAdj[x]) {
-            int destino = relacao.second.first;
-            int peso = relacao.second.second;
-            if (peso && !inMST[destino] && peso < key[destino])
+            while (!min_heap.empty())
             {
-                key[destino] = peso;
-                min_heap.push({key[destino], destino});
-                pai[destino] = x;
+                int x = min_heap.top().second;
+                min_heap.pop();
+
+                if (inMST[x]) continue;
+
+                inMST[x] = true;
+
+                for (auto& relacao : listaAdj[x]) {
+                    int destino = relacao.second.first;
+                    int peso = relacao.second.second;
+                    if (peso && !inMST[destino] && peso < key[destino])
+                    {
+                        key[destino] = peso;
+                        min_heap.push({key[destino], destino});
+                        pai[destino] = x;
+                    }
+                }
             }
         }
     }
