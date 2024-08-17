@@ -6,6 +6,7 @@
 #include "include/prim.h"
 #include "include/euleriano.h"
 #include "include/conexo.h"
+#include "include/compConexo.h"
 
 using namespace std;
 
@@ -38,10 +39,11 @@ int main(){
     }
 
     // Peso total da arvore geradora minima e a distancia do vertice 0 ao N-1
-    int pesoTotal = 0;
+    /*int pesoTotal = 0;
     int caminhoMin = prim(lista_adj, qtdVertices, pesoTotal);
-    cout << caminhoMin //Imprime o caminho mínimo entre vértice 0 e o N-1
+    cout << caminhoMin //Imprime o caminho mínimo entre vértice 0 e o N-1                      //NÃO TA FUNCIONANDO PRA GRAFO NAO CONEXO
     << endl << pesoTotal << endl; //Imprime o valor total da Árvore Geradora Mínima
+    */ 
 
     //Verifica se é euleriano
     bool teste;
@@ -52,6 +54,11 @@ int main(){
     bool ehConexo;
     ehConexo = conexoNaoDir(lista_adj, qtdVertices);
     cout << ehConexo << endl;
+
+    //Verifica quantos componentes conexos existem
+    int qtdComp;
+    qtdComp = compConexo(lista_adj, qtdVertices); 
+    cout << qtdComp << endl;
 
     return 0;
 }
