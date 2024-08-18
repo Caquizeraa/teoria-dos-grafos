@@ -7,7 +7,7 @@ using namespace std;
 #define CINZA 1  // vertice descoberto
 #define PRETO 2  // vertice fechado
 
-vector<int> arestas(vector<vector<pair<int, pair<int, int>>>> lista_adj, int qtdVertices, int qtdArestas){
+vector<int> bfs(vector<vector<pair<int, pair<int, int>>>> lista_adj, int qtdVertices, int qtdArestas){
     int* cor = new int[qtdVertices];
     for(int i = 0; i <= qtdVertices; i++) {
         cor[i] = BRANCO;

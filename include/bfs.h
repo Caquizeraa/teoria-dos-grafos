@@ -4,6 +4,6 @@
 #include <vector>
 #include <queue>
 
-std::vector<int> arestas(std::vector<std::vector<std::pair<int, std::pair<int, int>>>> lista_adj, int qtdVertices, int qtdArestas);
+std::vector<int> bfs(std::vector<std::vector<std::pair<int, std::pair<int, int>>>> lista_adj, int qtdVertices, int qtdArestas);
 
 #endif

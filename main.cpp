@@ -8,6 +8,9 @@
 #include "include/conexo.h"
 #include "include/compConexo.h"
 #include "include/bfs.h"
+#include "include/dfs.h"
+#include "include/ciclo.h"
+
 
 using namespace std;
 
@@ -54,6 +57,7 @@ int main(){
 
     //2 -Verificar se um grafo não-orientado é bipartido. 
 
+
     //3 -Verificar se um grafo qualquer é Euleriano.   
     cout<<"3- ";
     bool teste;
@@ -61,6 +65,10 @@ int main(){
     cout << teste << endl;
 
     //4 -Verificar se um grafo possui ciclo.
+    cout<<"4- ";
+    bool cicloVar;
+    cicloVar = ciclo(lista_adj, qtdVertices);
+    cout<<cicloVar<<endl;
 
     //5 -Calcular a quantidade de componentes conexas em um grafo não-orientado.
     cout<<"5- ";
@@ -75,13 +83,20 @@ int main(){
     //8 -Calcular quantas arestas ponte possui um grafo não-orientado.    
     
     //9 -Imprimir a árvore em profundidade (priorizando a ordem lexicográfica dos vértices; 0 é a origem). Você deve imprimir o identificador das arestas. Caso o grafo seja desconexo, considere apenas a árvore com a raíz 0.   
-    
-    //10 -Árvore de largura (priorizando a ordem lexicográfica dos vértices; 0 é a origem). Você deve imprimir o identificador das arestas. Caso o grafo seja desconexo, considere apenas a árvore com a raíz 0.    
-    vector<int> bfs = arestas(lista_adj, qtdVertices, qtdArestas);
-    cout<<"10- ";
-    for(int id : bfs) {
+    vector<int> arestasDfs = dfs(lista_adj, qtdVertices, qtdArestas);
+    cout<<"9- ";
+    for(int id : arestasDfs) {
         cout << id << " ";
     }
+    cout<<endl;
+
+    //10 -Árvore de largura (priorizando a ordem lexicográfica dos vértices; 0 é a origem). Você deve imprimir o identificador das arestas. Caso o grafo seja desconexo, considere apenas a árvore com a raíz 0.    
+    vector<int> arestasBfs = bfs(lista_adj, qtdVertices, qtdArestas);
+    cout<<"10- ";
+    for(int id : arestasBfs) {
+        cout << id << " ";
+    }
+    cout<<endl;
 
     //11 -Calcular o valor final de uma árvore geradora mínima (para grafos não-orientados).    
     
