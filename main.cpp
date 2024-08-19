@@ -10,6 +10,7 @@
 #include "include/bfs.h"
 #include "include/dfs.h"
 #include "include/ciclo.h"
+#include "include/topologica.h"
 
 
 using namespace std;
@@ -101,7 +102,13 @@ int main(){
     //11 -Calcular o valor final de uma árvore geradora mínima (para grafos não-orientados).    
     
     //12 -Imprimir a ordem os vértices em uma ordenação topológica. Esta função não fica disponível em grafos não direcionado. Deve-se priorizar a ordem lexicográfica dos vértices.   
-    
+    vector<int> top = ordenacao_topologica(lista_adj,qtdVertices);
+    cout<<"12- ";
+    for(int id : top) {
+        cout << id << " ";
+    }
+    cout<<endl;
+
     //13 -Valor do caminho mínimo entre dois vértices (para grafos não-orientados com pelo menos um peso diferente nas arestas).  0 é a origem; n-1 é o destino.   
     
     //14 -Valor do fluxo máximo para grafos direcionados. 0 é a origem; n-1 é o destino.   
@@ -113,6 +120,5 @@ int main(){
 
     //Verifica quantos componentes conexos existem
     
-
     return 0;
 }
