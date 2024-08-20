@@ -14,6 +14,7 @@
 #include "include/pontes.h"
 #include "include/bipartido.h"
 #include "include/articulados.h"
+#include "include/dijkstra.h"
 
 
 using namespace std;
@@ -136,8 +137,7 @@ int main(){
     //13 -Valor do caminho mínimo entre dois vértices (para grafos não-orientados com pelo menos um peso diferente nas arestas).  0 é a origem; n-1 é o destino.   
     if(!conexoNaoDir(lista_adj, qtdVertices))cout << "13- -1" << endl;
     else{  
-        int pesoTotal;
-        int caminhoMin = prim(lista_adj, qtdVertices, pesoTotal);
+        int caminhoMin = djikstra(lista_adj, qtdVertices);
         cout << "13- " << caminhoMin << endl; 
     }    
     //14 -Valor do fluxo máximo para grafos direcionados. 0 é a origem; n-1 é o destino.   
