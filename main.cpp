@@ -13,6 +13,7 @@
 #include "include/topologica.h"
 #include "include/pontes.h"
 #include "include/bipartido.h"
+#include "include/articulados.h"
 
 
 using namespace std;
@@ -79,6 +80,14 @@ int main(){
     //6 -Calcular a quantidade de componentes fortemente conexas em um grafo orientado.
 
     //7 -Imprimir os vértices de articulação de um grafo não-orientado (priorizar a ordem lexicográfica dos vértices).    
+    cout<<"7- ";
+    vector<int> qtdArticulado;
+    qtdArticulado = articulados(lista_adj, qtdVertices);
+    for (int vertices : qtdArticulado)
+    {
+        cout << vertices << " ";
+    }
+    cout << endl;
     
     //8 -Calcular quantas arestas ponte possui um grafo não-orientado.  
     cout <<"8- ";
@@ -112,12 +121,17 @@ int main(){
     }    
     
     //12 -Imprimir a ordem os vértices em uma ordenação topológica. Esta função não fica disponível em grafos não direcionado. Deve-se priorizar a ordem lexicográfica dos vértices.   
-    vector<int> top = ordenacao_topologica(lista_adj,qtdVertices);
-    cout<<"12- ";
-    for(int id : top) {
-        cout << id << " ";
+    if (tipoGrafo == "nao_direcionado")
+    {
+        cout << -1 << endl;
+    }else{
+        vector<int> top = ordenacao_topologica(lista_adj,qtdVertices);
+        cout<<"12- ";
+        for(int id : top) {
+            cout << id << " ";
+        }
+        cout<<endl;
     }
-    cout<<endl;
 
     //13 -Valor do caminho mínimo entre dois vértices (para grafos não-orientados com pelo menos um peso diferente nas arestas).  0 é a origem; n-1 é o destino.   
     if(!conexoNaoDir(lista_adj, qtdVertices))cout << "13- -1" << endl;

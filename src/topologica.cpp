@@ -2,6 +2,7 @@
 #include <queue>
 #include <algorithm>
 #include <stack>
+#include "../include/topologica.h"
 
 using namespace std;
 
