@@ -1,6 +1,5 @@
 #include <vector>
 #include <queue>
-#include "../include/bfs.h"
 
 using namespace std;
 
@@ -8,11 +7,8 @@ using namespace std;
 #define CINZA 1  // vertice descoberto
 #define PRETO 2  // vertice fechado
 
-vector<int> bfs(vector<vector<pair<int, pair<int, int>>>> lista_adj, int qtdVertices, int qtdArestas){
-    int* cor = new int[qtdVertices];
-    for(int i = 0; i <= qtdVertices; i++) {
-        cor[i] = BRANCO;
-    }
+vector<int> bfs(vector<vector<pair<int, pair<int, int>>>> lista_adj, int qtdVertices){
+     vector<int> cor(qtdVertices, BRANCO);
 
     int origem = 0;
     queue<int> fila;
@@ -23,8 +19,6 @@ vector<int> bfs(vector<vector<pair<int, pair<int, int>>>> lista_adj, int qtdVert
     while(!fila.empty()){
         int u = fila.front();
         fila.pop();
-        cor[u] = PRETO;
-
         for(auto& vizinho : lista_adj[u]) {
             int id = vizinho.first;
             int v = vizinho.second.first;
@@ -35,6 +29,7 @@ vector<int> bfs(vector<vector<pair<int, pair<int, int>>>> lista_adj, int qtdVert
                 fila.push(v);
             }
         }
+        cor[u] = PRETO;
     }
 
     // Exibindo o vetor de arestas que foram percorridas na BFS

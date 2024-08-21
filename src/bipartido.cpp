@@ -10,7 +10,7 @@ using namespace std;
 #define VERMELHO 2 //Pintado de vermelho
 
 bool bipartido(vector<vector<pair<int, pair<int, int>>>>& listaAdj, int qtdVertices){
-    int* cor = new int[qtdVertices];
+    vector<int> cor(qtdVertices, BRANCO);
     for (int i = 0; i < qtdVertices; i++)
     {
         if(cor[i] == BRANCO){ 
