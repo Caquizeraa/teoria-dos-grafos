@@ -1,5 +1,5 @@
 #include <vector>
-#include "../include/grafo.h"
+#include <iostream>
 
 using namespace std;
 
@@ -7,19 +7,19 @@ using namespace std;
 #define CINZA 1  // vértice descoberto
 #define PRETO 2  // vértice fechado
 
-bool final(vector<int> cor, vector<pair<int, pair<int, int>>> vizinhos) {
-    for(auto vizinho : vizinhos){
+bool final(vector<int> cor, vector<pair<int, pair<int, int>>>& vizinhos) {
+    for(auto& vizinho : vizinhos){
         int v = vizinho.second.first;
         if(cor[v] == BRANCO){
             return false;
         }
     }
     return true;
-};
+}
 
-void Grafo::dfs() {
-    vector<int> cor(this->qtdVertices, BRANCO);
-    vector<int> dfsArestas;
+vector<int> dfs(vector<vector<pair<int, pair<int, int>>>>& lista_adj, int qtdVertices) {
+    vector<int> cor(qtdVertices, BRANCO);
+    vector<int> arestas;
     vector<int> pilha;
 
     int origem = 0;
@@ -29,14 +29,14 @@ void Grafo::dfs() {
 
     while(!pilha.empty()) {
         int u = pilha.back();
-        if(!final(cor, this->listaAdj[u])) {
-            for(auto& vizinho : this->listaAdj[u]) {
+        if(!final(cor, lista_adj[u])) {
+            for(auto& vizinho : lista_adj[u]) {
                 int id = vizinho.first;
                 int v = vizinho.second.first;
                 if(cor[v] == BRANCO) {
                     pilha.push_back(v);
                     cor[v] = CINZA;
-                    dfsArestas.push_back(id);
+                    arestas.push_back(id);
                     break;
                 }
             }
@@ -45,13 +45,6 @@ void Grafo::dfs() {
             pilha.pop_back();
         }
     }
-    this->executouDfs = true;
-    this->dfsArestas = dfsArestas;
-};
 
-vector<int> Grafo::getDfsArestas(){
-    if(!(this->executouDfs)){
-        this->dfs();
-    }
-    return this->dfsArestas;
+    return arestas;
 }
