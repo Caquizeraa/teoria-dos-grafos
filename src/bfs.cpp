@@ -12,7 +12,8 @@ void Grafo::bfs(){
     vector<int> cor(this->qtdVertices, BRANCO);
     vector<int> bfsArestas;
     queue<int> fila;
-
+    vector<vector<pair<int, pair<int, int>>>> listaAdj = this->getLista();
+    
     int origem = 0;
     fila.push(origem);
     cor[origem] = CINZA;
@@ -20,7 +21,7 @@ void Grafo::bfs(){
     while(!fila.empty()){
         int u = fila.front();
         fila.pop();
-        for(auto vizinho : this->listaAdj[u]) {
+        for(auto vizinho : listaAdj[u]) {
             int id = vizinho.first;
             int v = vizinho.second.first;
             if(cor[v] == BRANCO){
@@ -29,6 +30,7 @@ void Grafo::bfs(){
                 fila.push(v);
             }else if(!(this->executouDfs) and !(this->ciclo) and cor[v] == CINZA){
                 this->ciclo = true;
+                break;
             }
         }
         cor[u] = PRETO;

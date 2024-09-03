@@ -7,10 +7,9 @@ using namespace std;
 class Grafo {
     private:
         // Dados Grafo
-        int qtdVertices;
-        int qtdArestas;
+        int qtdVertices; int qtdArestas; bool tipoGrafo;
         vector<vector<pair<int, pair<int, int>>>> listaAdj;
-        bool tipoGrafo;
+        // Dados Funcoes
         // Conexo
         bool conexo;
         // Bipartido
@@ -20,20 +19,15 @@ class Grafo {
         // Ciclo
         bool ciclo;
         // CompConexas
-        int compConexas;
-        int compFortementeConexas;
+        int compConexas; int compFortementeConexas;
         // Articulados
         vector<int> articulacao;
         // Pontes
         int qtdPonte;
         // DFS
-        bool executouDfs;
-        void dfs();
-        vector<int> dfsArestas;
+        bool executouDfs; vector<int> dfsArestas; void dfs();
         // BFS
-        bool executouBfs;
-        void bfs();
-        vector<int> bfsArestas;
+        bool executouBfs; vector<int> bfsArestas; void bfs();
         // AGM
         int agm;
         // Ordem Topologica
@@ -54,16 +48,21 @@ class Grafo {
         bool getCiclo();
 };
 
+// Construtor
 Grafo::Grafo(int qtdVertices, int qtdArestas, vector<vector<pair<int, pair<int, int>>>> listaAdj, bool tipoGrafo){
+    // Constroi o grafo com base nas informacoes passadas
     this->qtdVertices = qtdVertices;
     this->qtdArestas = qtdArestas;
     this->listaAdj = listaAdj;
     this->tipoGrafo = tipoGrafo;
+    // Inicializando flags
     this->executouDfs = false;
     this->executouBfs = false;
+    // Inicializando dados das funcoes
     this->ciclo = false;
 }
 
+// Getter - Lista de Adjacência
 vector<vector<pair<int, pair<int, int>>>> Grafo::getLista(){
     return this->listaAdj;
 }

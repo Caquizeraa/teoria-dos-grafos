@@ -31,7 +31,7 @@ class Grafo {
         int fluxoMaximo;
         std::vector<int> fechoTransitivo;
     public:
-        Grafo(int qtdVertices, int qtdArestas, std::vector<std::vector<std::pair<int,std:: pair<int, int>>>> listaAdj, bool tipoGrafo);
+        Grafo(int qtdVertices, int qtdArestas, std::vector<std::vector<std::pair<int,std::pair<int, int>>>> listaAdj, bool tipoGrafo);
         std::vector<std::vector<std::pair<int, std::pair<int, int>>>> getLista();
         std::vector<int> getDfsArestas();
         std::vector<int> getBfsArestas();

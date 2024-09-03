@@ -21,15 +21,16 @@ void Grafo::dfs() {
     vector<int> cor(this->qtdVertices, BRANCO);
     vector<int> dfsArestas;
     vector<int> pilha;
+    vector<vector<pair<int, pair<int, int>>>> listaAdj = this->getLista();
 
     int origem = 0;
     pilha.push_back(origem);
     cor[origem] = CINZA;
-
+    
     while(!pilha.empty()) {
         int u = pilha.back();
-        if(!final(cor, this->listaAdj[u])) {
-            for(auto vizinho : this->listaAdj[u]) {
+        if(!final(cor, listaAdj[u])) {
+            for(auto vizinho : listaAdj[u]) {
                 int id = vizinho.first;
                 int v = vizinho.second.first;
                 if(cor[v] == BRANCO) {
@@ -37,9 +38,9 @@ void Grafo::dfs() {
                     cor[v] = CINZA;
                     dfsArestas.push_back(id);
                     break;
-                }else if(!(this->executouBfs) and !(this->ciclo) and cor[v] == CINZA){
+                }else if(!(this->executouDfs) and !(this->ciclo) and cor[v] == CINZA){
                     this->ciclo = true;
-                }
+            }
             }
         } else {
             cor[u] = PRETO;
