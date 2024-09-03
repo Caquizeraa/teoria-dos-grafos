@@ -23,14 +23,13 @@ void Grafo::dfs() {
     vector<int> pilha;
 
     int origem = 0;
-
     pilha.push_back(origem);
     cor[origem] = CINZA;
 
     while(!pilha.empty()) {
         int u = pilha.back();
         if(!final(cor, this->listaAdj[u])) {
-            for(auto& vizinho : this->listaAdj[u]) {
+            for(auto vizinho : this->listaAdj[u]) {
                 int id = vizinho.first;
                 int v = vizinho.second.first;
                 if(cor[v] == BRANCO) {
@@ -38,6 +37,8 @@ void Grafo::dfs() {
                     cor[v] = CINZA;
                     dfsArestas.push_back(id);
                     break;
+                }else if(!(this->executouBfs) and !(this->ciclo) and cor[v] == CINZA){
+                    this->ciclo = true;
                 }
             }
         } else {

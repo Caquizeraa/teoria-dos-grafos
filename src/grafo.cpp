@@ -31,6 +31,8 @@ class Grafo {
         void dfs();
         vector<int> dfsArestas;
         // BFS
+        bool executouBfs;
+        void bfs();
         vector<int> bfsArestas;
         // AGM
         int agm;
@@ -48,6 +50,8 @@ class Grafo {
         // Getters
         vector<vector<pair<int, pair<int, int>>>> getLista();
         vector<int> getDfsArestas();
+        vector<int> getBfsArestas();
+        bool getCiclo();
 };
 
 Grafo::Grafo(int qtdVertices, int qtdArestas, vector<vector<pair<int, pair<int, int>>>> listaAdj, bool tipoGrafo){
@@ -55,8 +59,9 @@ Grafo::Grafo(int qtdVertices, int qtdArestas, vector<vector<pair<int, pair<int, 
     this->qtdArestas = qtdArestas;
     this->listaAdj = listaAdj;
     this->tipoGrafo = tipoGrafo;
-
     this->executouDfs = false;
+    this->executouBfs = false;
+    this->ciclo = false;
 }
 
 vector<vector<pair<int, pair<int, int>>>> Grafo::getLista(){

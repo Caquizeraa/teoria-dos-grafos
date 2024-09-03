@@ -22,6 +22,8 @@ class Grafo {
         bool executouDfs;
         void dfs();
         std::vector<int> dfsArestas;
+        bool executouBfs;
+        void bfs();
         std::vector<int> bfsArestas;
         int agm;
         std::vector<int> ordemTopologica;
@@ -32,5 +34,7 @@ class Grafo {
         Grafo(int qtdVertices, int qtdArestas, std::vector<std::vector<std::pair<int,std:: pair<int, int>>>> listaAdj, bool tipoGrafo);
         std::vector<std::vector<std::pair<int, std::pair<int, int>>>> getLista();
         std::vector<int> getDfsArestas();
+        std::vector<int> getBfsArestas();
+        bool getCiclo();
 };
 #endif

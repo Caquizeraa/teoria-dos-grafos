@@ -396,7 +396,12 @@ void Menu::eureliano(){
     cout<<"O grafo e eureliano";
 }
 void Menu::ciclo(){
-    cout<<"O grafo possui ciclos";
+    bool ciclo = grafo->getCiclo();
+    if(ciclo){
+        cout<<"O grafo possui ciclo!"<<endl;
+    }else{
+        cout<<"O grafo nao possui ciclo!"<<endl;
+    }
 }
 void Menu::dfs(){
     vector<int> dfsArestas = grafo->getDfsArestas();
@@ -407,7 +412,12 @@ void Menu::dfs(){
     cout<<endl;
 }
 void Menu::bfs(){
-
+    vector<int> bfsArestas = grafo->getBfsArestas();
+    cout<<"O ID das arestas da arvore de largura e: ";
+    for(auto aresta : bfsArestas){
+        cout<<aresta<<" ";
+    }
+    cout<<endl;
 }
 
 // Submenus Opcoes - Direcionados
