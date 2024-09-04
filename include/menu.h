@@ -5,7 +5,8 @@
 
 class Menu{
     private:
-        int option;
+        int option; // Opcao do menu
+        // Dados do grafo inserido
         bool tipoGrafo; // Direcionado - 0 | Nao Direcionado - 1
         int qtdVertices;
         int qtdArestas;
@@ -28,7 +29,7 @@ class Menu{
         void opcoesNaoDirecionado();
         void imprimeGrafo();
         // Submenus Opcoes
-        void subMenu(void (*subMenuFunc)());
+        void subMenu(void (Menu::*subMenuFunc)());
         // Submenus Opcoes - Gerais
         void eureliano();
         void ciclo();
@@ -48,6 +49,8 @@ class Menu{
         void arestasPonte();
         void agm();
         void caminhoMinimo();
+        // Destrutor
+        void destrutorMenu();
 };
 
 #endif

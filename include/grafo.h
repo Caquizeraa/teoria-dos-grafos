@@ -7,34 +7,46 @@
 
 class Grafo {
     private:
-        int qtdVertices;
-        int qtdArestas;
+        // Dados Grafo
+        int qtdVertices; int qtdArestas; bool tipoGrafo;
         std::vector<std::vector<std::pair<int,std:: pair<int, int>>>> listaAdj;
-        bool tipoGrafo;
+        // Dados Funcoes
+        // Conexo
         bool conexo;
+        // Bipartido
         bool bipartido;
+        // Eureliano
         bool eureliano;
+        // Ciclo
         bool ciclo;
-        int compConexas;
-        int compFortementeConexas;
+        // CompConexas
+        int compConexas; int compFortementeConexas;
+        // Articulados
         std::vector<int> articulacao;
+         // Pontes
         int qtdPonte;
-        bool executouDfs;
-        void dfs();
-        std::vector<int> dfsArestas;
-        bool executouBfs;
-        void bfs();
-        std::vector<int> bfsArestas;
+        // DFS
+        bool executouDfs; std::vector<int> dfsArestas; void dfs();
+        // BFS
+        bool executouBfs; std::vector<int> bfsArestas; void bfs();
+        // AGM
         int agm;
+        // Ordem Topologica
         std::vector<int> ordemTopologica;
+        // Caminho Minimo
         int caminhoMinimo;
+        // Fluxo Maximo
         int fluxoMaximo;
+        // Fecho Transitivo
         std::vector<int> fechoTransitivo;
     public:
+        // Construtor
         Grafo(int qtdVertices, int qtdArestas, std::vector<std::vector<std::pair<int,std::pair<int, int>>>> listaAdj, bool tipoGrafo);
+        // Getters
         std::vector<std::vector<std::pair<int, std::pair<int, int>>>> getLista();
         std::vector<int> getDfsArestas();
         std::vector<int> getBfsArestas();
         bool getCiclo();
+        bool getEureliano();
 };
 #endif

@@ -401,6 +401,7 @@ void Menu::subMenu(void (Menu::*subMenuFunc)()){
         }
     }
     while(option != 1 and option !=2);
+    // Se entrada for 1, voltar do inicio, se for 2, encerrar a execucao
     if(option == 1){
         this->menuOpcoes();
     }else{
@@ -409,10 +410,15 @@ void Menu::subMenu(void (Menu::*subMenuFunc)()){
 }
 
 // Submenus Opcoes - Gerais
-void Menu::eureliano(){
-    cout<<"O grafo e eureliano";
+void Menu::eureliano(){ // Menu que mostra o resultado da funcao eureliano
+    bool eureliano = grafo->getEureliano();
+    if(eureliano){
+        cout<<"O grafo e eureliano";
+    }else{
+        cout<<"O grafo nao e eureliano";
+    }
 }
-void Menu::ciclo(){
+void Menu::ciclo(){ // Menu que mostra o resultado da funcao ciclo
     bool ciclo = grafo->getCiclo();
     if(ciclo){
         cout<<"O grafo possui ciclo!"<<endl;
@@ -420,7 +426,7 @@ void Menu::ciclo(){
         cout<<"O grafo nao possui ciclo!"<<endl;
     }
 }
-void Menu::dfs(){
+void Menu::dfs(){ // Menu que mostra o resultado da funcao dfs
     vector<int> dfsArestas = grafo->getDfsArestas();
     cout<<"O ID das arestas da arvore de profundidade e: ";
     for(auto& aresta : dfsArestas){
@@ -428,7 +434,7 @@ void Menu::dfs(){
     }
     cout<<endl;
 }
-void Menu::bfs(){
+void Menu::bfs(){ // Menu que mostra o resultado da funcao bfs
     vector<int> bfsArestas = grafo->getBfsArestas();
     cout<<"O ID das arestas da arvore de largura e: ";
     for(auto aresta : bfsArestas){
@@ -438,7 +444,7 @@ void Menu::bfs(){
 }
 
 // Submenus Opcoes - Direcionados
-void Menu::fracamenteConexo(){
+void Menu::fracamenteConexo(){ 
 
 }
 

@@ -46,6 +46,7 @@ class Grafo {
         vector<int> getDfsArestas();
         vector<int> getBfsArestas();
         bool getCiclo();
+        bool getEureliano();
 };
 
 // Construtor
@@ -60,6 +61,7 @@ Grafo::Grafo(int qtdVertices, int qtdArestas, vector<vector<pair<int, pair<int, 
     this->executouBfs = false;
     // Inicializando dados das funcoes
     this->ciclo = false;
+    this->eureliano = true;
 }
 
 // Getter - Lista de Adjacência
