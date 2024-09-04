@@ -444,8 +444,13 @@ void Menu::bfs(){ // Menu que mostra o resultado da funcao bfs
 }
 
 // Submenus Opcoes - Direcionados
-void Menu::fracamenteConexo(){ 
-
+void Menu::fracamenteConexo(){ // Menu que mostra o resultado da funcao conexo para grafos direcionados (fracamente)
+    bool fracamenteConexo = grafo->getConexo();
+    if(fracamenteConexo){
+        cout<<"O grafo e fracamente conexo!"<<endl;
+    }else{
+        cout<<"O grafo nao e fracamente conexo!"<<endl;
+    }
 }
 
 void Menu::compFortementeConexas(){
@@ -463,8 +468,13 @@ void Menu::fechoTransitivo(){
 }
 
 // Submenus Opcoes - Nao Direcionados
-void Menu::conexo(){
-
+void Menu::conexo(){ // Menu que mostra o resultado da funcao conexo para grafos nao direcionados
+    bool conexo = grafo->getConexo();
+    if(conexo){
+        cout<<"O grafo e conexo!"<<endl;
+    }else{
+        cout<<"O grafo nao e conexo!"<<endl;
+    }
 }
 void Menu::bipartido(){
 
@@ -485,6 +495,7 @@ void Menu::caminhoMinimo(){
 
 }
 
+// Metodo destrutor - Acionado no fim da execucao, para garantir consistencia da memoria
 void Menu::destrutorMenu(){
     delete[] this->grafo;
     this->grafo = nullptr;

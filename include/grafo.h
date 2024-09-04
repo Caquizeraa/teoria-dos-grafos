@@ -12,7 +12,7 @@ class Grafo {
         std::vector<std::vector<std::pair<int,std:: pair<int, int>>>> listaAdj;
         // Dados Funcoes
         // Conexo
-        bool conexo;
+        bool executouConexo; bool conexo; void calculaConexo();
         // Bipartido
         bool bipartido;
         // Eureliano
@@ -44,9 +44,11 @@ class Grafo {
         Grafo(int qtdVertices, int qtdArestas, std::vector<std::vector<std::pair<int,std::pair<int, int>>>> listaAdj, bool tipoGrafo);
         // Getters
         std::vector<std::vector<std::pair<int, std::pair<int, int>>>> getLista();
+        bool getTipo();
         std::vector<int> getDfsArestas();
         std::vector<int> getBfsArestas();
         bool getCiclo();
         bool getEureliano();
+        bool getConexo();
 };
 #endif

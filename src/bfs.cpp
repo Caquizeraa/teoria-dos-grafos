@@ -24,6 +24,8 @@ void Grafo::bfs(){
     fila.push(origem);
     cor[origem] = CINZA;
 
+    // Marca o numero de vertices visitados a partir do 0
+    int numVisitados = 0;
     // Enquanto a fila nao estiver vazia
     while(!fila.empty()){
         // Salvar o primeiro vertice da fila, iniciar contagem de seu grau, e remover da fila
@@ -48,12 +50,18 @@ void Grafo::bfs(){
             }
         }
         // Depois de percorrer todos os vizinhos do vertice, marcar como preto
+        numVisitados++;
         cor[u] = PRETO;
         // Checar se seu grau é par, caso nao seja, salvar a informacao de que ele nao e eureliano
         if(!this->executouBfs and grau%2 !=0){
             this->eureliano = false;
         }
     }
+    // Ao terminar a busca, se o numero de vertices encontrados nao é igual ao numero de vertices do grafo, ele nao e conexo
+    if(this->conexo and numVisitados<qtdVertices and !this->executouConexo){
+        this->conexo = false;
+    }
+
     // Marcar a flag de execucao da bfs como true, e retorna as arestas percorridas
     this->executouBfs = true;
     this->bfsArestas = bfsArestas;
