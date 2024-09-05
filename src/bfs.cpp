@@ -9,7 +9,7 @@ using namespace std;
 #define CINZA 1  // vértice descoberto
 #define PRETO 2  // vértice fechado
 
-void Grafo::bfs(){
+void Grafo::bfs(int origem /*= 0*/){
     // Inicia um array, com uma cor para cada vertice, iniciados como branco (inexplorados)
     vector<int> cor(this->qtdVertices, BRANCO);
     // Vetor aonde serao salvas as arestas percorridas
@@ -20,7 +20,6 @@ void Grafo::bfs(){
     vector<vector<pair<int, pair<int, int>>>> listaAdj = this->getLista();
 
     // Insere 0 na pilha e marca como cinza (descoberto)
-    int origem = 0;
     fila.push(origem);
     cor[origem] = CINZA;
 
@@ -58,8 +57,8 @@ void Grafo::bfs(){
         }
     }
     // Ao terminar a busca, se o numero de vertices encontrados nao é igual ao numero de vertices do grafo, ele nao e conexo
-    if(this->conexo and numVisitados<qtdVertices and !this->executouConexo){
-        this->conexo = false;
+    if(this->conexo and numVisitados<qtdVertices and !this->executouConexo and !this->executouDfs){
+        //this->conexo = false;
     }
 
     // Marcar a flag de execucao da bfs como true, e retorna as arestas percorridas

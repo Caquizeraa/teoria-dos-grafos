@@ -25,9 +25,9 @@ class Grafo {
         // Pontes
         int qtdPonte;
         // DFS
-        bool executouDfs; vector<int> dfsArestas; void dfs();
+        bool executouDfs; vector<int> dfsArestas; void dfs(int origem = 0);
         // BFS
-        bool executouBfs; vector<int> bfsArestas; void bfs();
+        bool executouBfs; vector<int> bfsArestas; void bfs(int origem = 0);
         // AGM
         int agm;
         // Ordem Topologica

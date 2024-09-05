@@ -1,5 +1,4 @@
 #include <vector>
-#include <iostream>
 #include "../include/grafo.h"
 
 using namespace std;
@@ -27,9 +26,9 @@ void Grafo::calculaConexo(){
     }
     // Se o grafo for nao direcionado
     else{
-        // Se nao executou a bfs, executar, pois ela calcula se um grafo nao direcionado e ou nao conexo
-        if(!(this->executouBfs)){
-            this->bfs();
+        // Se nao executou a dfs, executar, pois ela calcula se um grafo nao direcionado e ou nao conexo
+        if(!(this->executouDfs) and !(this->executouBfs)){
+            this->dfs();
         }
     }
     // Setar a flag de execucao de calcula conexo para true

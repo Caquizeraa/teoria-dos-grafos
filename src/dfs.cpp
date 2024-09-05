@@ -22,7 +22,7 @@ bool final(vector<int> cor, vector<pair<int, pair<int, int>>> vizinhos) {
     return true;
 };
 
-void Grafo::dfs() {
+void Grafo::dfs(int origem /*= 0*/) {
     // Inicia um array, com uma cor para cada vertice, iniciados como branco (inexplorados)
     vector<int> cor(this->qtdVertices, BRANCO);
     // Vetor aonde serao salvas as arestas percorridas
@@ -33,10 +33,11 @@ void Grafo::dfs() {
     vector<vector<pair<int, pair<int, int>>>> listaAdj = this->getLista();
 
     // Insere 0 na pilha e marca como cinza (descoberto)
-    int origem = 0;
     pilha.push_back(origem);
     cor[origem] = CINZA;
-    
+
+    // Marca o numero de vertices visitados a partir do 0
+    int numVisitados = 0;
     // Enquanto a pilha nao estiver vazia
     while(!pilha.empty()) {
         // Pego o ultimo valor da pilha
@@ -61,9 +62,14 @@ void Grafo::dfs() {
             }
         } else {
             // Se o vertice for final, marcar como preto (fechado) e remover da pilha
+            numVisitados++;
             cor[u] = PRETO;
             pilha.pop_back();
         }
+    }
+
+    if(this->conexo and numVisitados<qtdVertices and !this->executouConexo and !this->executouBfs){
+        this->conexo = false;
     }
     // Marca a flag de execucao da dfs como true, e retorna as arestas percorridas
     this->executouDfs = true;
