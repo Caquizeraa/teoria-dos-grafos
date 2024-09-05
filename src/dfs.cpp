@@ -8,21 +8,7 @@ using namespace std;
 #define CINZA 1  // vértice descoberto
 #define PRETO 2  // vértice fechado
 
-// Funcao que descobre se um vertice e ou nao final, com base nas cores de seus vizinhos
-bool final(vector<int> cor, vector<pair<int, pair<int, int>>> vizinhos) {
-    // Para cada vizinho
-    for(auto vizinho : vizinhos){
-        int v = vizinho.second.first;
-        // Se algum for branco, para a execucao, retornando que o vertice é nao final
-        if(cor[v] == BRANCO){
-            return false;
-        }
-    }
-    // Se percorreu todos os vizinhos, e nao encontrou um branco, retorna que ele e final  
-    return true;
-};
-
-void Grafo::dfs(int origem /*= 0*/) {
+void Grafo::dfs(int origem/*= 0*/) {
     // Inicia um array, com uma cor para cada vertice, iniciados como branco (inexplorados)
     vector<int> cor(this->qtdVertices, BRANCO);
     // Vetor aonde serao salvas as arestas percorridas
@@ -56,8 +42,9 @@ void Grafo::dfs(int origem /*= 0*/) {
                     empilhou = true;
                 }
                 // Se encontrar algum cinza, marcar o grafo como ciclo
-                else if(!(this->executouDfs) and !(this->ciclo) and cor[v] == CINZA){
+                else if(!(this->executouCiclo) and !(this->ciclo) and cor[v] == CINZA){
                     this->ciclo = true;
+                    this->executouCiclo = true;
                 }
             }
         } else {

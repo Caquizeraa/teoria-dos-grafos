@@ -44,8 +44,9 @@ void Grafo::bfs(int origem /*= 0*/){
                 fila.push(v);
             }
             // Se encontrar algum cinza, marcar o grafo como ciclo
-            else if(!(this->executouDfs) and !(this->ciclo) and cor[v] == CINZA){
+            else if(!(this->executouCiclo) and !(this->ciclo) and cor[v] == CINZA){
                 this->ciclo = true;
+                this->executouCiclo = true;
             }
         }
         // Depois de percorrer todos os vizinhos do vertice, marcar como preto

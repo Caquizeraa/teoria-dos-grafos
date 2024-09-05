@@ -458,7 +458,12 @@ void Menu::compFortementeConexas(){
 }
 
 void Menu::ordemTopologica(){
-
+    vector<int> ordemTopologica = grafo->getOrdemTopologica();
+    cout<<"O ID dos vertices ordenados topologicamente e: ";
+    for(auto vertice : ordemTopologica){
+        cout<<vertice<<" ";
+    }
+    cout<<endl;
 }
 void Menu::fluxoMaximo(){
 

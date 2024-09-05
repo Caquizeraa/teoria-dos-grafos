@@ -18,7 +18,7 @@ class Grafo {
         // Eureliano
         bool eureliano;
         // Ciclo
-        bool ciclo;
+        bool executouCiclo; bool ciclo;
         // CompConexas
         int compConexas; int compFortementeConexas;
         // Articulados
@@ -32,7 +32,7 @@ class Grafo {
         // AGM
         int agm;
         // Ordem Topologica
-        std::vector<int> ordemTopologica;
+        bool executouOrdemTopologica; std::vector<int> ordemTopologica; void calculaTopologica();
         // Caminho Minimo
         int caminhoMinimo;
         // Fluxo Maximo
@@ -50,5 +50,8 @@ class Grafo {
         bool getCiclo();
         bool getEureliano();
         bool getConexo();
+        std::vector<int> getOrdemTopologica();
+        // Funcoes extras
+        static bool final(std::vector<int> cor, std::vector<std::pair<int, std::pair<int, int>>> vizinhos); // Calcula se um vertice é final (nao tem vizinhos inexplorados)
 };
 #endif

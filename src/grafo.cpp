@@ -17,7 +17,7 @@ class Grafo {
         // Eureliano
         bool eureliano;
         // Ciclo
-        bool ciclo;
+        bool executouCiclo; bool ciclo;
         // CompConexas
         int compConexas; int compFortementeConexas;
         // Articulados
@@ -31,13 +31,15 @@ class Grafo {
         // AGM
         int agm;
         // Ordem Topologica
-        vector<int> ordemTopologica;
+        bool executouOrdemTopologica; vector<int> ordemTopologica; void calculaTopologica();
         // Caminho Minimo
         int caminhoMinimo;
         // Fluxo Maximo
         int fluxoMaximo;
         // Fecho Transitivo
         vector<int> fechoTransitivo;
+        // Funcoes extras
+        static bool final(vector<int> cor, vector<pair<int, pair<int, int>>> vizinhos); // Calcula se um vertice é final (nao tem vizinhos inexplorados)
     public:
         // Construtor
         Grafo(int qtdVertices, int qtdArestas, vector<vector<pair<int, pair<int, int>>>> listaAdj, bool tipoGrafo);
@@ -49,6 +51,7 @@ class Grafo {
         bool getCiclo();
         bool getEureliano();
         bool getConexo();
+        vector<int> getOrdemTopologica();
 };
 
 // Construtor
@@ -62,6 +65,8 @@ Grafo::Grafo(int qtdVertices, int qtdArestas, vector<vector<pair<int, pair<int, 
     this->executouDfs = false;
     this->executouBfs = false;
     this->executouConexo = false;
+    this->executouCiclo = false;
+    this->executouOrdemTopologica = false;
     // Inicializando dados das funcoes
     this->ciclo = false;
     this->conexo = true;
@@ -77,3 +82,17 @@ vector<vector<pair<int, pair<int, int>>>> Grafo::getLista(){
 bool Grafo::getTipo(){
     return this->tipoGrafo;
 }
+
+// Funcao que descobre se um vertice e ou nao final, com base nas cores de seus vizinhos
+bool Grafo::final(vector<int> cor, vector<pair<int, pair<int, int>>> vizinhos) {
+    // Para cada vizinho
+    for(auto vizinho : vizinhos){
+        int v = vizinho.second.first;
+        // Se algum for branco (0), para a execucao, retornando que o vertice é nao final
+        if(cor[v] == 0){
+            return false;
+        }
+    }
+    // Se percorreu todos os vizinhos, e nao encontrou um branco, retorna que ele e final  
+    return true;
+};
