@@ -12,7 +12,7 @@ class Grafo {
         std::vector<std::vector<std::pair<int,std:: pair<int, int>>>> listaAdj;
         // Dados Funcoes
         // Conexo
-        bool executouConexo; bool conexo; void calculaConexo();
+        bool executouConexo; bool conexo; void calculaConexo(); 
         // Bipartido
         bool bipartido;
         // Eureliano
@@ -20,7 +20,7 @@ class Grafo {
         // Ciclo
         bool executouCiclo; bool ciclo;
         // CompConexas
-        int compConexas; int compFortementeConexas;
+        bool executouCompConexa; int compConexas; void calculaCompConexa(); void calculaConexa(); void calculaFortementeConexa();
         // Articulados
         std::vector<int> articulacao;
          // Pontes
@@ -51,6 +51,7 @@ class Grafo {
         bool getEureliano();
         bool getConexo();
         std::vector<int> getOrdemTopologica();
+        int getCompConexa();
         // Funcoes extras
         static bool final(std::vector<int> cor, std::vector<std::pair<int, std::pair<int, int>>> vizinhos); // Calcula se um vertice é final (nao tem vizinhos inexplorados)
 };

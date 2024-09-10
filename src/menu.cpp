@@ -485,7 +485,13 @@ void Menu::bipartido(){
 
 }
 void Menu::compConexas(){
-
+    int compConexa = grafo->getCompConexa();
+    if(compConexa <= 1){
+        cout<<"O grafo tem "<<compConexa<< " componente conexa!";
+    }else{
+        cout<<"O grafo tem "<<compConexa<< " componentes conexas!";
+    }
+    cout<<endl;
 }
 void Menu::verticesArticulacao(){
 

@@ -11,7 +11,7 @@ class Grafo {
         vector<vector<pair<int, pair<int, int>>>> listaAdj;
         // Dados Funcoes
         // Conexo
-        bool executouConexo; bool conexo; void calculaConexo();
+        bool executouConexo; bool conexo; void calculaConexo(); 
         // Bipartido
         bool bipartido;
         // Eureliano
@@ -19,7 +19,7 @@ class Grafo {
         // Ciclo
         bool executouCiclo; bool ciclo;
         // CompConexas
-        int compConexas; int compFortementeConexas;
+        bool executouCompConexa; int compConexas; void calculaCompConexa(); void calculaConexa(); void calculaFortementeConexa();
         // Articulados
         vector<int> articulacao;
         // Pontes
@@ -52,6 +52,7 @@ class Grafo {
         bool getEureliano();
         bool getConexo();
         vector<int> getOrdemTopologica();
+        int getCompConexa();
 };
 
 // Construtor
@@ -67,10 +68,12 @@ Grafo::Grafo(int qtdVertices, int qtdArestas, vector<vector<pair<int, pair<int, 
     this->executouConexo = false;
     this->executouCiclo = false;
     this->executouOrdemTopologica = false;
+    this->executouCompConexa = false;
     // Inicializando dados das funcoes
     this->ciclo = false;
     this->conexo = true;
     this->eureliano = true;
+    this->compConexas = 0;
 }
 
 // Getter - Lista de Adjacência

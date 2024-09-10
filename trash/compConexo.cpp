@@ -12,21 +12,7 @@ using namespace std;
 #define PRETO 2  // vértice fechado
 
 
-int compConexo(vector<vector<pair<int, pair<int, int>>>> listaAdj, int qtdVertices){
-    vector<bool> visitados(qtdVertices, false);
-    int qtdComponentes = 0;
 
-    for (int i = 0; i < qtdVertices; i++)
-    {
-        if (!visitados[i])
-        {
-            marcaVisitados(listaAdj, i, visitados);
-            qtdComponentes++;
-        }   
-    }
-
-    return qtdComponentes;
-}
 
 int compFortementeConexo(vector<vector<pair<int, pair<int, int>>>> listaAdj, int qtdVertices){
     int componentes = 0;
