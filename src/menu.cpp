@@ -454,7 +454,13 @@ void Menu::fracamenteConexo(){ // Menu que mostra o resultado da funcao conexo p
 }
 
 void Menu::compFortementeConexas(){
-
+    int compConexa = grafo->getCompConexa();
+    if(compConexa <= 1){
+        cout<<"O grafo tem "<<compConexa<< " componente conexa!";
+    }else{
+        cout<<"O grafo tem "<<compConexa<< " componentes conexas!";
+    }
+    cout<<endl;
 }
 
 void Menu::ordemTopologica(){
