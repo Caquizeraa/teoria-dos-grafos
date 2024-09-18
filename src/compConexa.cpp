@@ -1,5 +1,4 @@
 #include <vector>
-#include <iostream>
 #include "../include/grafo.h"
 
 using namespace std;

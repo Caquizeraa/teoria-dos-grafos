@@ -37,7 +37,7 @@ class Grafo {
         // Fluxo Maximo
         int fluxoMaximo;
         // Fecho Transitivo
-        vector<int> fechoTransitivo;
+        bool executoFechoTransitivo; vector<int> fechoTransitivo; void calculaFechoTransitivo();
         // Funcoes extras
         static bool final(vector<int> cor, vector<pair<int, pair<int, int>>> vizinhos); // Calcula se um vertice é final (nao tem vizinhos inexplorados)
     public:
@@ -53,6 +53,7 @@ class Grafo {
         bool getConexo();
         vector<int> getOrdemTopologica();
         int getCompConexa();
+        vector<int> getFechoTransitivo();
 };
 
 // Construtor
@@ -69,6 +70,7 @@ Grafo::Grafo(int qtdVertices, int qtdArestas, vector<vector<pair<int, pair<int, 
     this->executouCiclo = false;
     this->executouOrdemTopologica = false;
     this->executouCompConexa = false;
+    this->executoFechoTransitivo = false;
     // Inicializando dados das funcoes
     this->ciclo = false;
     this->conexo = true;

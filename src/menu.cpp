@@ -475,7 +475,12 @@ void Menu::fluxoMaximo(){
 
 }
 void Menu::fechoTransitivo(){
-
+    vector<int> fechoTransitivo = grafo->getFechoTransitivo();
+    cout<<"Os vertices do fecho transitivo do vertice 0 sao: ";
+    for(auto vertice : fechoTransitivo){
+        cout<<vertice<<" ";
+    }
+    cout<<endl;
 }
 
 // Submenus Opcoes - Nao Direcionados
